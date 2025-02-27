@@ -16,4 +16,3 @@ Route::get('/contacto',[MensajeController::class, 'create']);
 Route::post('/crear-contacto',[MensajeController::class, 'store']);
 
 
-
