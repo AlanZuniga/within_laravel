@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre'); 
             $table->string('corre');
             $table->text('mensaje');
-            $table->string('ciudad')->default();
+            $table->string('ciudad')->default('');
             $table->timestamps();
         });
     }
