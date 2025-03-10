@@ -7,7 +7,9 @@
     <title>Contacto</title>
 </head>
 <body>
-@if ($errors->any())
+    <h1>Editar mensaje # {{ $mensaje->id }}</h1>
+
+    @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -16,16 +18,27 @@
             </ul>
         </div>
     @endif
-    <form action="/mensajes" method="POST"> <!-----apunta a resource!-->
+
+    <form action="{{ route('mensajes.update', $mensaje) }}" method="POST">
         @csrf
+        @method('PUT')
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" value="{{ old('nombre') }}">
+        <input type="text" name="nombre" value="{{ $mensaje->nombre }}">
+        @error('nombre')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <br>
         <label for="correo">Correo</label>
-        <input type="email" name="correo" value="{{ old('correo') }}">
+        <input type="email" name="correo" value="{{ $mensaje->correo }}">
+        @error('correo')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <br>
         <label for="mensaje">Mensaje</label>
-        <textarea name="mensaje" cols="30" rows="10">{{ old('mensaje') }}</textarea>
+        <textarea name="mensaje" cols="30" rows="10">{{ $mensaje->mensaje }}</textarea>
+        @error('mensaje')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <br>
         <button type="submit">
             Enviar
