@@ -10,7 +10,7 @@ class MensajeController extends Controller
 {
     public function index(){
         $mensajes = Mensaje::all(); //variable mensaje -> modelo mensajes -> todo
-        dd($mensajes);
+        //dd($mensajes);
         return view('lista-mensajes', ['mensajes'=> $mensajes]); //crear un arreglo ['mensajes'=> $mensajes]
     }
     public function create () 
