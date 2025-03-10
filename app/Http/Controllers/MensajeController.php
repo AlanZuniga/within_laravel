@@ -37,6 +37,12 @@ class MensajeController extends Controller
         // Redirigir
         return redirect('/contacto');
     }
+
+
+    public function show(Mensaje $mensaje)
+    {
+        return view('mensajes.show-mensaje', compact('mensaje'));
+    }
 }
 
 
