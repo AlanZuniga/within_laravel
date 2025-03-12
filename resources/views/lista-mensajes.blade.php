@@ -10,6 +10,7 @@
 
     <table border="2">
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Fecha</th>

@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class MensajeController extends Controller
 {
     public function index(){
-        $mensajes = Mensaje::all(); //variable mensaje -> modelo mensajes -> todo
-        //dd($mensajes);
-        return view('lista-mensajes', ['mensajes'=> $mensajes]); //crear un arreglo ['mensajes'=> $mensajes]
+        return view('lista-mensajes', [
+            'mensajes' => Mensaje::all()
+        ]);
     }
     public function create () 
     {    #FUNCION ANONIMA
@@ -24,18 +24,22 @@ class MensajeController extends Controller
         // dd('si llego a esta ruta');
 
         // Validar formulario
-
+        $request->validate([
+            'nombre' => 'required|min:3|max:255',
+            'correo' => ['required', 'email', 'max:255'],
+            'mensaje' => ['required', 'min:15']
+        ]);
+        
         // Guardar a DB
         $mensaje = new Mensaje();
         $mensaje->nombre = $request->nombre;
         $mensaje->correo = $request->correo;
         $mensaje->mensaje = $request->mensaje;
-        $mensaje->ciudad = 'Guadalajara';
         //guardar en la basse de datos 
         $mensaje->save();
 
         // Redirigir
-        return redirect('/contacto');
+        return redirect('/mensajes');
     }
 
     //add ---------------------------------------------
