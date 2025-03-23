@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MensajeFactory extends Factory
 {
-
     public function definition(): array
     {
         return [
             'nombre' => fake()->name(),
             'correo' => fake()->unique()->safeEmail(),
             'mensaje' => fake()->sentence(),
+
         ];
     }
 }
